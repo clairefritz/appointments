@@ -1,0 +1,27 @@
+{
+  "name": "frontend-test",
+  "version": "1.0.0",
+  "description": "The frontend application test for Kisura",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kisura/frontend-test.git"
+  },
+  "author": "kisura",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/Kisura/frontend-test#readme",
+  "devDependencies": {
+    "browser-sync": "^2.11.2",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-cssnano": "^2.1.1",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-useref": "^3.0.8",
+    "jasmine": "^2.4.1",
+    "run-sequence": "^1.1.5",
+    "sass": "^0.5.0"
+  }
+}
