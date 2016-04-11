@@ -1,8 +1,8 @@
 let appointmentId = 0;
-export default addAppointment = (text) => {
+export const addAppointment = (appointmentDetail) => {
   return {
     type: 'ADD_APPOINTMENT',
     id: appointmentId++,
-    text
+    appointmentDetail
   }
 };

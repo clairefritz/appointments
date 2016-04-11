@@ -3,3 +3,5 @@ node_modules/
 dist/
 frontend-test.iml
 .idea/
+app/css/
+app/js/

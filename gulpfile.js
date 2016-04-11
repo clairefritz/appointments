@@ -25,7 +25,7 @@ gulp.task('compile-js', function(){
       entries: './client/app.js',
       debug: true
     })
-    .transform("babelify", {presets: ["es2015", "react"]})
+    .transform("babelify", {presets: ["es2015", "react"], plugins: ["transform-class-properties"]})
     .bundle()
     .pipe(source('main.js'))
     .pipe(gulp.dest('./app/js'));
@@ -45,8 +45,8 @@ gulp.task('clean:dist', function() {
 
 gulp.task('sass', function(){
   return gulp.src('app/scss/**/*.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('dist/css'))
+    .pipe(sass({outputStyle: 'compressed'}))
+    .pipe(gulp.dest('app/css'))
     .pipe(browserSync.reload({
       stream: true
     }));
@@ -61,10 +61,11 @@ gulp.task('build', function (callback) {
 
 gulp.task('watch', ['browserSync', 'sass', 'useref'], function(){
   gulp.watch('app/scss/**/*.scss', ['sass']);
+  gulp.watch('client/**/*.js', ['useref']);
+  gulp.watch('shared/**/*.js', ['useref']);
   gulp.watch('app/*.html', browserSync.reload);
   gulp.watch('app/js/**/*.js', browserSync.reload);
-  gulp.watch('app/client/**/*.js', browserSync.reload);
-  gulp.watch('app/shared/**/*.js', browserSync.reload);
+  gulp.watch('app/css/**/*.css', browserSync.reload);
 });
 
 gulp.task('default', function (callback) {
