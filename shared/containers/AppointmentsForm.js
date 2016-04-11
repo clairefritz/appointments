@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { addAppointment } from '../actions'
 
 // TODO: empty the form fields after submitting the form
-// TODO: form validation: don't send an empty/incomplete form (notes could be optional)
 
 let AppointmentsForm = ({ dispatch }) => {
   let inputs = {};

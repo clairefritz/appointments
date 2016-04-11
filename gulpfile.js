@@ -36,7 +36,10 @@ gulp.task('useref', ['compile-js'], function(){
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
     .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 gulp.task('clean:dist', function() {
@@ -44,7 +47,7 @@ gulp.task('clean:dist', function() {
 });
 
 gulp.task('sass', function(){
-  return gulp.src('app/scss/**/*.scss')
+  return gulp.src('scss/**/*.scss')
     .pipe(sass({outputStyle: 'compressed'}))
     .pipe(gulp.dest('app/css'))
     .pipe(browserSync.reload({
@@ -60,7 +63,7 @@ gulp.task('build', function (callback) {
 });
 
 gulp.task('watch', ['browserSync', 'sass', 'useref'], function(){
-  gulp.watch('app/scss/**/*.scss', ['sass']);
+  gulp.watch('scss/**/*.scss', ['sass']);
   gulp.watch('client/**/*.js', ['useref']);
   gulp.watch('shared/**/*.js', ['useref']);
   gulp.watch('app/*.html', browserSync.reload);
